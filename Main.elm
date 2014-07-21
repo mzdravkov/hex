@@ -25,15 +25,6 @@ newField n dimensions = let lines = repeat n <| lineOfHexagons n dimensions
                                    (zipWith (,) offsetX offsetY)
                                    lines
 
-clicks : [[Graphics.Input.Input Bool]]
-clicks = repeat side <| repeat side (Graphics.Input.input False)
-
-makeClickable handle cell = Graphics.Input.clickable handle.handle True cell
-
-clickableField field = zipWith (\handles line -> zipWith makeClickable handles line)
-                               clicks
-                               field
-
 -- these are some simle formulas for the radius of one hexagon,
 -- based on the size of the window
 -- it takes the min of them, so that the whole field is inside
